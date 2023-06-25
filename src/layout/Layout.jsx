@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom"
 import CatAndLogoNavbar from "../components/CatAndLogoNavbar"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import Index from "../pages/Index"
 
 const Layout = ( )=>{
    return(
@@ -11,7 +12,11 @@ const Layout = ( )=>{
 
    <>
     <CatAndLogoNavbar/>
+
+
     <Outlet/>
+
+    <Index/>
     <Footer/>
    </>
    )
