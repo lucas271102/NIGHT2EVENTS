@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useRef } from "react";
 import apiUrl from "../../api";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import logo from '../assets/png/logo-no-background.png'
 
@@ -19,8 +19,8 @@ const SignUp = ()=>{
             password:password.current.value,
             profilePicture: profilePicture.current.files[0]
         }
-    }
-    axios.post(apiUrl+ 'users', data)
+    console.log(data)
+    axios.post(`${apiUrl}/signup`, data)
     .then(res=>{
         Swal.fire({
             title: 'User registered',
@@ -29,6 +29,17 @@ const SignUp = ()=>{
           });
           navigate('/login')
     })
+    .catch(err=>{console.log(err)
+        Swal.fire({
+            title: 'Check the fields',
+            text: err.response.data.message,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+    
+    })
+})      
+    }
+
     return (
         <section className="relative flex flex-wrap bg-violet-700 lg:h-screen lg:items-center">
   <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
@@ -47,7 +58,7 @@ const SignUp = ()=>{
       </p>
     </div>
 
-    <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+    <form onSubmit={(e)=>handleForm(e)} class="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
         <label for="email" className="sr-only">Email</label>
 
@@ -56,6 +67,7 @@ const SignUp = ()=>{
             type="email"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
+            ref={email}
           />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -85,6 +97,7 @@ const SignUp = ()=>{
             type="password"
             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
+            ref={password}
           />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -112,13 +125,14 @@ const SignUp = ()=>{
         </div>
       </div>
       <div>
-        <label for="photo" className="sr-only">Profile Picture</label>
+        <label htmlFor="photo" className="sr-only">Profile Picture</label>
 
         <div className="relative">
           <input
             type="file"
             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Profile picture URL"
+            ref={profilePicture}
           />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -152,12 +166,12 @@ const SignUp = ()=>{
           <Link to='/login' className="underline" href="">Sign in</Link>
         </p>
 
-        <button
+        <input
           type="submit"
           className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
-        >
-          Sign up
-        </button>
+       />
+          
+        
       </div>
     </form>
   </div>
@@ -165,4 +179,5 @@ const SignUp = ()=>{
 </section>
     )
 }
+
 export default SignUp
