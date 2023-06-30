@@ -52,12 +52,12 @@ const CatAndLogoNavbar = ()=>{
           </Link>
 
           <div className="flex">
-            <button
+            <Link to='/signup'
               className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-black"
              
             >
               Register
-            </button>
+            </Link>
           </div>
         </div>
 

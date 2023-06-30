@@ -1,19 +1,49 @@
-import React from 'react'
+import React from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRef } from "react";
+import apiUrl from "../../api";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import Login from "./Login";
 import logo from '../assets/png/logo-no-background.png'
-import { Link } from 'react-router-dom'
-const Login = () => {
-  return (
-   <>
-   
 
-<section className="relative flex flex-wrap bg-violet-700 lg:h-screen lg:items-center">
+const SignUp = ()=>{
+    const navigate = useNavigate()
+    const password = useRef()
+    const email = useRef()
+    const profilePicture= useRef()
+    function handleForm(e){
+        e.preventDefault()
+        let data ={
+            email:email.current.value,
+            password:password.current.value,
+            profilePicture: profilePicture.current.files[0]
+        }
+    }
+    axios.post(apiUrl+ 'users', data)
+    .then(res=>{
+        Swal.fire({
+            title: 'User registered',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
+          navigate('/login')
+    })
+    return (
+        <section className="relative flex flex-wrap bg-violet-700 lg:h-screen lg:items-center">
+  <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+    <img
+      alt="Welcome"
+      src={logo}
+      className="relative inset-0 h-full w-full object-cover"
+    />
+  </div>
   <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-lg text-center">
-      <h1 className="text-2xl font-bold text-white sm:text-3xl">Get started today!</h1>
+      <h1 className="text-2xl font-semibold font-sans text-white sm:text-3xl">Welcome TO NIGHT2Events!</h1>
 
-      <p className="mt-4 text-white">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla
-        eaque error neque ipsa culpa autem, at itaque nostrum!
+      <p className="mt-4  text-xl text-white">
+        Register here
       </p>
     </div>
 
@@ -81,32 +111,58 @@ const Login = () => {
           </span>
         </div>
       </div>
+      <div>
+        <label for="photo" className="sr-only">Profile Picture</label>
+
+        <div className="relative">
+          <input
+            type="file"
+            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Profile picture URL"
+          />
+
+          <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
 
       <div className="flex items-center justify-between">
         <p className="text-sm text-white">
-          No account?
-          <Link to='/signup' className="underline" href="">Sign up</Link>
+          Already have an account?
+          <Link to='/login' className="underline" href="">Sign in</Link>
         </p>
 
         <button
           type="submit"
           className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
         >
-          Sign in
+          Sign up
         </button>
       </div>
     </form>
   </div>
 
-  <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-    <img
-      alt="Welcome"
-      src={logo}
-      className="relative inset-0 h-full w-full object-cover"
-    />
-  </div>
 </section>
-   </>
-  )
+    )
 }
-export default Login
+export default SignUp
