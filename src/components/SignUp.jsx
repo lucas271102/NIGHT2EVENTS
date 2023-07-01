@@ -5,6 +5,7 @@ import { useRef } from "react";
 import apiUrl from "../../api";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
+import Alert from "./Alert";
 import logo from '../assets/png/logo-no-background.png'
 
 const SignUp = ()=>{
