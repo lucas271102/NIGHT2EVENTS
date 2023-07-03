@@ -46,12 +46,12 @@ const CatAndLogoNavbar = ()=>{
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="sm:flex sm:gap-4">
+        <div className="sm:flex  sm:gap-4">
           <Link to="/login" className="rounded-md bg-violet-700 px-5 py-2.5 text-sm font-medium text-white shadow" >
           Login
           </Link>
 
-          <div className="flex">
+          
             <Link to='/signup'
               className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-black"
              
@@ -64,7 +64,7 @@ const CatAndLogoNavbar = ()=>{
       
       </div>
     </div>
-  </div>
+  
 </header>
     )
 }
