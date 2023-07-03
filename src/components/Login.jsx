@@ -2,9 +2,44 @@ import React from 'react'
 import logo from '../assets/png/logo-no-background.png'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import axios from 'axios'
+import apiUrl from '../../api.js'
+import userLogin from '../store/actions/userLogin.js'
+import { useNavigate } from 'react-router-dom'
+const {SaveUserLogin}= userLogin
 const Login = () => {
+ const dispatch= useDispatch()
+ const navigate = useNavigate()
+ const email = useRef()
+ const password= useRef()
 
+ const Signin = (e)=>{
+e.preventDefault()
+let inputEmail= email.current.value
+let inputPassword= password.current.value
+
+let dataUser={
+  email:inputEmail,
+  password:inputPassword
+}
+axios.post(apiUrl+'users/signin', dataUser)
+.then(res=>{
+  console.log(res)
+  localStorage.setItem('token', res.data.token)
+  
+  dispatch(SaveUserLogin({
+    token:res.data.token,
+    user:res.data.user
+  }))
+  setTimeout(function(){
+    navigate('/')
+  },2000)
+})
+.catch(err=>{
+  console.log(err.data)
+})
+ }
   return (
    <>
    
@@ -29,6 +64,7 @@ const Login = () => {
             type="email"
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
+            ref={email}
           />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -58,6 +94,7 @@ const Login = () => {
             type="password"
             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
+            ref={password}
           />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -94,6 +131,7 @@ const Login = () => {
         <button
           type="submit"
           className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
+          onClick={Signin}
         >
           Sign in
         </button>

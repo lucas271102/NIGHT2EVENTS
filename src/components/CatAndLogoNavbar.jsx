@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import logo from '../assets/png/logo-no-background.png'
 const CatAndLogoNavbar = ()=>{
- 
+ let token = localStorage.getItem('token')
     return(
 
    
@@ -44,6 +44,8 @@ const CatAndLogoNavbar = ()=>{
           </ul>
         </nav>
       </div>
+{!token ?(
+
 
       <div className="flex items-center gap-4">
         <div className="sm:flex  sm:gap-4">
@@ -60,6 +62,10 @@ const CatAndLogoNavbar = ()=>{
             </Link>
           </div>
         </div>
+)
+
+
+:null}
 
       
       </div>
