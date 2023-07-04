@@ -24,21 +24,23 @@ const SignUp = ()=>{
     console.log(data)
     axios.post(`${apiUrl}users/signup`, data)
     .then(res=>{
-        Swal.fire({
-            title: 'User registered',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
+      toast({
+        title: 'User registered',
+        description: 'Now, you can sign in to buy',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
           navigate('/login')
     })
     .catch(err=>{console.log(err)
-        Swal.fire({
-            title: 'Check the fields',
-            text: err.response,
-            icon: 'error',
-            confirmButtonText: 'Ok'
-    
-    })
+      toast({
+        title: err,
+        description: '',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
 })      
     }
 
