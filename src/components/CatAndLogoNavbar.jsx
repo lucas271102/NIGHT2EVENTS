@@ -7,7 +7,7 @@ const CatAndLogoNavbar = ()=>{
     return(
 
    
-<header className="bg-black">
+<header className="bg-black  shadow-white-500/50">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-16 items-center justify-between">
       <div className="md:flex md:items-center md:gap-12">
@@ -26,7 +26,7 @@ const CatAndLogoNavbar = ()=>{
 
             <li>
               <button
-                className="text-white transition hover:text-violet-600"
+                className="text-white text-xl transition hover:text-violet-600 "
                 
               >
                 Vender
@@ -34,12 +34,12 @@ const CatAndLogoNavbar = ()=>{
             </li>
 
             <li>
-              <button
-                className="text-white transition hover:text-violet-600"
+              <Link to ='/buytickets'
+                className="text-white transition text-xl hover:text-violet-600"
                 
               >
                 Comprar
-              </button>
+              </Link>
             </li>
           </ul>
         </nav>
