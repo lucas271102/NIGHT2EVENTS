@@ -7,13 +7,14 @@ import axios from 'axios'
 import apiUrl from '../../api.js'
 import userLogin from '../store/actions/userLogin.js'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
 const {SaveUserLogin}= userLogin
 const Login = () => {
  const dispatch= useDispatch()
  const navigate = useNavigate()
  const email = useRef()
  const password= useRef()
-
+const toast = useToast()
  const Signin = (e)=>{
 e.preventDefault()
 let inputEmail= email.current.value
@@ -26,6 +27,13 @@ let dataUser={
 axios.post(apiUrl+'users/signin', dataUser)
 .then(res=>{
   console.log(res)
+  toast({
+    title: 'Signed in successfully',
+    description: 'Now, you can buy',
+    status: 'success',
+    duration: 9000,
+    isClosable: true,
+  })
   localStorage.setItem('token', res.data.token)
   
   dispatch(SaveUserLogin({
@@ -37,7 +45,14 @@ axios.post(apiUrl+'users/signin', dataUser)
   },2000)
 })
 .catch(err=>{
-  console.log(err.data)
+  toast({
+    title: 'Something went wrong...',
+    description: '',
+    status: 'error',
+    duration: 9000,
+    isClosable: true,
+  })
+  console.log(err)
 })
  }
   return (

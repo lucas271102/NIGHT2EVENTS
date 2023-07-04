@@ -7,12 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Alert from "./Alert";
 import logo from '../assets/png/logo-no-background.png'
-
+import { useToast } from "@chakra-ui/react";
 const SignUp = ()=>{
     const navigate = useNavigate()
     const password = useRef()
     const email = useRef()
     const profilePicture= useRef()
+    const toast = useToast()
     function handleForm(e){
         e.preventDefault()
         let data ={
