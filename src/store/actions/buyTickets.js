@@ -18,3 +18,4 @@ async(response)=>{
    }}
 )
 const actions = {buyTickets_read}
+export default actions 
