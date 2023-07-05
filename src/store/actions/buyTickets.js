@@ -7,7 +7,7 @@ async(response)=>{
    try {
     let token = localStorage.getItem('token')
     let headers = {headers:{'Authorization':`Bearer ${token}`}}
-    let res = await axios(apiUrl+'tickets', headers)
+    let res = await axios(`${apiUrl}/tickets`)
     console.log('response', res.data.tickets)
     return {tickets:res.data.tickets}
    } catch (error) {
@@ -18,4 +18,4 @@ async(response)=>{
    }}
 )
 const actions = {buyTickets_read}
-export default actions 
+export default actions
