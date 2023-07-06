@@ -19,55 +19,78 @@ const BuyTickets=()=>{
       //dispatch(buyTickets_read())
     //}
   //},[])
+
+
   const [tickets, setTickets]= useState([])
-  axios(`${apiUrl}tickets`)
-  .then((res)=>setTickets(res.data.response))
-  .catch((err)=>console.log(err))
+  useEffect(()=>{
+    axios(`${apiUrl}tickets`)
+    .then((res)=>setTickets(res.data.response))
+    .catch((err)=>console.log(err))
+
+  }, [])
     return(
         <div className="bg-black h-screen">
 
              <h1 className="text-3xl  p-2 text-white text-center">Here is your second chance to go out</h1>
+
+
+
+
+
+<div className="border border-red-600 flex  gap-6 p-4 flex-row">    
 {tickets.map((tick)=>(
+  
+  
+<a href="#"  className="group relative  overflow-hidden   border rounded-md w-[27%]">
+  <button
+    className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+  >
+    <span className="sr-only">Wishlist</span>
 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="h-4 w-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+      />
+    </svg>
+  </button>
 
+  <img
+    src={tick.photo}
+    alt=""
+    className="h-64 w-full p-2  border rounded-md object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+  />
 
+  <div className="relative border border-gray-100 bg-white p-6">
+    <span
+      className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+    >
+      New
+    </span>
 
+    <h3 className="mt-4 text-lg font-medium text-gray-900">{tick.name}</h3>
 
+    <p className="mt-1.5 text-sm text-gray-700">${tick.price}</p>
 
-
-             <Card maxW='sm'  className="flex">
-  <CardBody >
-    <Image
-      src={tick.photo}
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{tick.name}</Heading>
-      <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        ${tick.price}
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='purple'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-</Card>
-))}
-
+    <form className="mt-4">
+      <button
+        className=" w-full rounded bg-violet-700 text-white  p-4 text-sm font-medium transition hover:scale-105"
+      >
+        Add to Cart
+      </button>
+    </form>
+  </div>
+</a>
+   ))}
+   </div>
 
         </div>
     )
