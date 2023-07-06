@@ -9,16 +9,20 @@ import tickets_actions from '../store/actions/buyTickets'
 import { useSelector, useDispatch } from "react-redux"
 
 const BuyTickets=()=>{
-  const dispatch= useDispatch()
-  let {buyTickets_read} = tickets_actions
-  let tickets = useSelector(store=> store.buyTickets.tickets)
-  console.log(tickets)
+//  const dispatch= useDispatch()
+//  let {buyTickets_read} = tickets_actions
+  //let tickets = useSelector(store=> store.tickets)
+  //console.log(tickets)
 
-  useEffect(()=>{
-    if(tickets.length===0){
-      dispatch(buyTickets_read())
-    }
-  },[])
+  //useEffect(()=>{
+    //if(tickets.length===0){
+      //dispatch(buyTickets_read())
+    //}
+  //},[])
+  const [tickets, setTickets]= useState([])
+  axios(`${apiUrl}tickets`)
+  .then((res)=>setTickets(res.data.response))
+  .catch((err)=>console.log(err))
     return(
         <div className="bg-black h-screen">
 
@@ -31,8 +35,8 @@ const BuyTickets=()=>{
 
 
 
-             <Card maxW='sm'>
-  <CardBody>
+             <Card maxW='sm'  className="flex">
+  <CardBody >
     <Image
       src={tick.photo}
       alt='Green double couch with wooden legs'
