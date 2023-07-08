@@ -1,12 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Text, Image } from '@chakra-ui/react'
+//import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Text, Image } from '@chakra-ui/react'
 import axios from "axios"
 import { useState, useEffect } from "react"
 import apiUrl from "../../api"
 import tickets_actions from '../store/actions/buyTickets'
 import { useSelector, useDispatch } from "react-redux"
+import { Button, Spacer } from "@nextui-org/react";
 
 const BuyTickets=()=>{
 //  const dispatch= useDispatch()
@@ -37,11 +38,11 @@ const BuyTickets=()=>{
 
 
 
-<div className="border border-red-600 flex  gap-6 p-4 flex-row">    
+<div className=" flex   gap-6 p-4 flex-row">    
 {tickets.map((tick)=>(
   
   
-<a href="#"  className="group relative  overflow-hidden   border rounded-md w-[27%]">
+<a href="#"  className="group relative  overflow-hidden   border rounded-md    md:w-[27%]">
   <button
     className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
   >
@@ -81,11 +82,7 @@ const BuyTickets=()=>{
     <p className="mt-1.5 text-sm text-gray-700">${tick.price}</p>
 
     <form className="mt-4">
-      <button
-        className=" w-full rounded bg-violet-700 text-white  p-4 text-sm font-medium transition hover:scale-105"
-      >
-        Add to Cart
-      </button>
+    <Button size="lg" color='secondary'>Add to cart</Button>
     </form>
   </div>
 </a>
