@@ -8,7 +8,7 @@ import apiUrl from "../../api"
 import tickets_actions from '../store/actions/buyTickets'
 import { useSelector, useDispatch } from "react-redux"
 import { Button, Spacer } from "@nextui-org/react";
-
+import { Pagination } from "@nextui-org/react";
 const BuyTickets=()=>{
 //  const dispatch= useDispatch()
 //  let {buyTickets_read} = tickets_actions
@@ -30,19 +30,20 @@ const BuyTickets=()=>{
 
   }, [])
     return(
-        <div className="bg-black h-screen">
+        <div className="bg-black h-full">
+          
 
-             <h1 className="text-3xl  p-2 text-white text-center">Here is your second chance to go out</h1>
-
-
-
+             <h1 className="text-3xl font-semibold p-4 text-white text-center">Here is your second chance to go out</h1>
 
 
-<div className=" flex   gap-6 p-4 flex-row">    
+
+
+
+<div className=" flex flex-wrap justify-center items-center gap-6 p-6 ">    
 {tickets.map((tick)=>(
   
   
-<a href="#"  className="group relative  overflow-hidden   border rounded-md    md:w-[27%]">
+<div  className="group relative     rounded-xl   w-[100%]    md:w-[40%] xl:w-[25%]">
   <button
     className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
   >
@@ -67,12 +68,12 @@ const BuyTickets=()=>{
   <img
     src={tick.photo}
     alt=""
-    className="h-64 w-full p-2  border rounded-md object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+    className="h-64 w-full   border rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-72"
   />
 
-  <div className="relative border border-gray-100 bg-white p-6">
+  <div className="relative border border-gray-100 relative rounded-xl bg-white p-6">
     <span
-      className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+      className="whitespace-nowrap bg-violet-700 px-3 py-1.5 text-xs  text-white font-medium"
     >
       New
     </span>
@@ -81,14 +82,17 @@ const BuyTickets=()=>{
 
     <p className="mt-1.5 text-sm text-gray-700">${tick.price}</p>
 
-    <form className="mt-4">
-    <Button size="lg" color='secondary'>Add to cart</Button>
+    <form className="mt-4 w-[50%]">
+    <Button size="md" className="w-[50%] flex justify-center items-center" color='secondary'>Add to cart</Button>
     </form>
   </div>
-</a>
+</div>
    ))}
    </div>
+   <div className="flex justify-center items-center ">
 
+   <Pagination total={5} color={"secondary"} initialPage={1} className='flex justify-center items-center right-0' />
+   </div>
         </div>
     )
 }

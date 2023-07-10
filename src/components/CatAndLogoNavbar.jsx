@@ -9,7 +9,7 @@ const CatAndLogoNavbar = ()=>{
    
 <header className="bg-black  shadow-white-500/50">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-    <div className="flex h-16 items-center justify-between">
+    <div className="flex h-44 md:h-16 flex-col md:flex-row items-center  justify-between">
       <div className="md:flex md:items-center md:gap-12">
         <a className="block text-teal-600" >
           <span className="sr-only">Home</span>
@@ -25,12 +25,12 @@ const CatAndLogoNavbar = ()=>{
 
 
             <li>
-              <button
+              <Link to='/publish'
                 className="text-white text-xl transition hover:text-violet-600 "
                 
               >
                 Vender
-              </button>
+              </Link>
             </li>
 
             <li>
@@ -72,6 +72,7 @@ const CatAndLogoNavbar = ()=>{
     </div>
   
 </header>
+
     )
 }
 export default CatAndLogoNavbar
