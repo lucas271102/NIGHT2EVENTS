@@ -1,9 +1,69 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
+import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
 import logo from '../assets/png/logo-no-background.png'
+
+
+import axios from 'axios'
+import { useRef } from "react";
+import { useToast } from '@chakra-ui/react'
+import apiUrl from '../../api.js'
+import { useNavigate } from "react-router-dom";
 const CatAndLogoNavbar = ()=>{
  let token = localStorage.getItem('token')
+ const [visible, setVisible] = React.useState(false);
+ const handler = () => setVisible(true);
+ const closeHandler = () => {
+   setVisible(false);
+   console.log("closed");
+ };
+const navigate = useNavigate()
+const toast = useToast()
+ const name = useRef()
+ const price = useRef()
+ const photo=useRef()
+ const category_id= useRef()
+
+ const publish = (e)=>{
+  
+  let newName= name.current.value
+  let newPrice = price.current.value
+  let newPhoto= photo.current.value
+  let newCategory=category_id.current.value
+  let publicData= {
+    name:newName,
+    price:newPrice,
+    photo:newPhoto,
+    category_id:newCategory
+  }
+
+  axios.post(apiUrl+'tickets/publish', publicData)
+  .then(res=>{
+    console.log(res)
+    toast({
+      title: 'Ticket published successfully',
+      description: 'Now, you can see it',
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    })
+  setTimeout(() => {
+    navigate('/buytickets')
+  }, 1500);
+  })
+  .catch(err=>{
+    toast({
+      title: 'Something went wrong...',
+      description: '',
+      status: 'error',
+      duration: 9000,
+      isClosable: true,
+    })
+    console.log(err)
+  })
+
+  
+ }
     return(
 
    
@@ -25,12 +85,98 @@ const CatAndLogoNavbar = ()=>{
 
 
             <li>
-              <Link to='/publish'
-                className="text-white text-xl transition hover:text-violet-600 "
-                
-              >
-                Vender
-              </Link>
+            <div>
+      <Button auto color="secondary" shadow onPress={handler}>
+        Vender
+      </Button>
+      <Modal
+        closeButton
+        blur
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Publish your
+            <Text b size={18}>
+                   ticket
+            </Text>
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Name"
+            ref={name}
+          
+          />
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Price"
+            ref={price}
+           
+          />
+           <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Photo"
+            ref={photo}
+            
+          />
+           <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder='Category'
+            ref={category_id}
+          />
+          <Row justify="space-between">
+            <Checkbox>
+              <Text size={14}>Remember me</Text>
+            </Checkbox>
+            <Text size={14}>Forgot password?</Text>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeHandler}>
+            Close
+          </Button>
+          <Button auto color={'secondary'} onPress={publish}>
+            PUBLISH
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </li>
 
             <li>
