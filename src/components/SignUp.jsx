@@ -31,6 +31,8 @@ const SignUp = ()=>{
         duration: 9000,
         isClosable: true,
       })
+      localStorage.setItem('user', data)
+  
           navigate('/login')
     })
     .catch(err=>{console.log(err)

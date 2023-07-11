@@ -151,13 +151,13 @@ const toast = useToast()
             <Text size={14}>Forgot password?</Text>
           </Row>
         </Modal.Body>
-        <Modal.Footer>
-          <Button auto flat color="error" onPress={closeHandler}>
+        <Modal.Footer className="flex justify-between">
+          <button className="bg-red-500 p-2 text-white font-semibold text-lg  font-sans border rounded-lg w-24" onClick={closeHandler}>
             Close
-          </Button>
-          <Button auto color={'secondary'} onPress={publish}>
-            PUBLISH
-          </Button>
+          </button>
+          <button className="bg-violet-700 font-sans p-2 text-white font-semibold text-lg border rounded-lg w-24" onClick={publish}>
+            Publish
+          </button>
         </Modal.Footer>
       </Modal>
     </div>
