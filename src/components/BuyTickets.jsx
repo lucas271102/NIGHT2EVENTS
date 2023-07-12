@@ -9,26 +9,26 @@ import tickets_actions from '../store/actions/buyTickets'
 import { useSelector, useDispatch } from "react-redux"
 import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
+const {buyTickets_read} = tickets_actions
 const BuyTickets=()=>{
-//  const dispatch= useDispatch()
-//  let {buyTickets_read} = tickets_actions
-  //let tickets = useSelector(store=> store.tickets)
-  //console.log(tickets)
+  let tickets = useSelector(store=> console.log(store?.buyTickets))
+  const dispatch= useDispatch()
+  
 
-  //useEffect(()=>{
-    //if(tickets.length===0){
-      //dispatch(buyTickets_read())
-    //}
-  //},[])
-
-
-  const [tickets, setTickets]= useState([])
   useEffect(()=>{
-    axios(`${apiUrl}tickets`)
-    .then((res)=>setTickets(res.data.response))
-    .catch((err)=>console.log(err))
+    
+      dispatch(buyTickets_read())
+    
+  },[])
 
-  }, [])
+
+//  const [tickets, setTickets]= useState([])
+  //useEffect(()=>{
+    //axios(`${apiUrl}tickets`)
+    //.then((res)=>setTickets(res.data.response))
+    //.catch((err)=>console.log(err))
+
+  //}, [])
     return(
         <div className="bg-black  h-full">
           
