@@ -6,9 +6,8 @@ async()=>{
   
    try {
   
-     axios(`${apiUrl}tickets`)
-    .then((res)=>res.data)
-    return res.data.response
+    let res =  await axios(`${apiUrl}tickets`)
+    return {tickets:res.response}
    } catch (error) {
     console.log(error)
     return{

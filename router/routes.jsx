@@ -5,6 +5,7 @@ import Index from "../src/pages/Index";
 import SignUp from "../src/components/SignUp";
 import BuyTickets from "../src/components/BuyTickets";
 import Publish from "../src/components/Publish";
+import Cart from "../src/components/Cart";
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
             { path: "/", element: <Index/> },
             {path:"/signup", element: <SignUp/>},
             {path:'/buytickets', element:<BuyTickets/>},
-            {path:'/publish', element:<Publish/>}
+            {path:'/publish', element:<Publish/>},
+            {path:'/cart', element:<Cart/>}
         ]
     }
 ])
