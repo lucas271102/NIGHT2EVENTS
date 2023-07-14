@@ -157,12 +157,12 @@ const BuyTickets=()=>{
         View my cart (2)
       </a>
 
-      <button
+      <Link to='/cart'
       
         class="block rounded bg-violet-700 px-5 py-3 text-sm text-white transition hover:bg-black"
       >
         Checkout
-      </button>
+      </Link>
 
       <button
       
@@ -195,7 +195,7 @@ const BuyTickets=()=>{
 
   
   
-      <div className="group relative     rounded-xl   xl:w-[25%]  ">
+      <div className="group relative     rounded-xl   xl:w-[25%] shadow-[0_0_15px_white] ">
         <button
           className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
         >
@@ -221,7 +221,7 @@ const BuyTickets=()=>{
           alt=""
           className="h-64 w-full   border rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-72" />
   
-        <div className="relative border border-gray-100 relative rounded-xl bg-white p-6">
+        <div className="relative border border-gray-100  rounded-xl bg-white p-6">
           <span
             className="whitespace-nowrap bg-violet-700 px-3 py-1.5 text-xs  text-white font-medium"
           >

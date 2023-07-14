@@ -86,7 +86,7 @@ const toast = useToast()
 
             <li>
             <div>
-      <Button auto color="secondary" shadow onPress={handler}>
+      <Button auto color="secondary"  shadow onPress={handler}>
         Vender
       </Button>
       <Modal
