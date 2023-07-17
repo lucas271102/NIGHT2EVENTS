@@ -22,6 +22,7 @@ const toast = useToast()
  const name = useRef()
  const price = useRef()
  const photo=useRef()
+ const stock_available= useRef()
  const category_id= useRef()
 
  const publish = (e)=>{
@@ -30,11 +31,13 @@ const toast = useToast()
   let newPrice = price.current.value
   let newPhoto= photo.current.value
   let newCategory=category_id.current.value
+  let newStock = stock_available.current.value
   let publicData= {
     name:newName,
     price:newPrice,
     photo:newPhoto,
-    category_id:newCategory
+    category_id:newCategory,
+    stock_available:newStock
   }
 
   axios.post(apiUrl+'tickets/publish', publicData)
@@ -91,7 +94,7 @@ const toast = useToast()
       </Button>
       <Modal
         closeButton
-        blur
+        
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
@@ -133,6 +136,7 @@ const toast = useToast()
             size="lg"
             placeholder="Photo"
             ref={photo}
+            type='file'
             
           />
            <Input
@@ -143,6 +147,15 @@ const toast = useToast()
             size="lg"
             placeholder='Category'
             ref={category_id}
+          />
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder='Stock'
+            ref={stock_available}
           />
           <Row justify="space-between">
             <Checkbox>
