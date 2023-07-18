@@ -52,7 +52,7 @@ const toast = useToast()
     })
   setTimeout(() => {
     navigate('/buytickets')
-  }, 1500);
+  }, 1000);
   })
   .catch(err=>{
     toast({
@@ -70,19 +70,19 @@ const toast = useToast()
     return(
 
    
-<header className="bg-black  shadow-white-500/50">
+<header className="bg-black p-10 shadow-white-500/50">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-44 md:h-16 flex-col md:flex-row items-center  justify-between">
       <div className="md:flex md:items-center md:gap-12">
         <a className="block text-teal-600" >
-          <span className="sr-only">Home</span>
+          <span className="sr-only text-white">Home</span>
        <Link to='/'> <img src={logo} className='w-32 p-4 h-24' /></Link>   
         </a>
       </div>
 
-      <div className="block">
+      <div className="block ">
         <nav aria-label="Global">
-          <ul className="flex items-center gap-6 text-sm">
+          <ul className="flex items-center gap-6 p-4 text-sm">
            
 
 
@@ -206,8 +206,8 @@ const toast = useToast()
 {!token ?(
 
 
-      <div className="flex items-center gap-4">
-        <div className="sm:flex  sm:gap-4">
+      <div className="flex items-center gap-6">
+        <div className="sm:flex  p-4 gap-6">
           <Link to="/login" className="rounded-md bg-violet-700 px-5 py-2.5 text-sm font-medium text-white shadow" >
           Login
           </Link>
