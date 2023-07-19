@@ -136,7 +136,7 @@ const toast = useToast()
             size="lg"
             placeholder="Photo"
             ref={photo}
-            type='file'
+            
             
           />
            <Input
