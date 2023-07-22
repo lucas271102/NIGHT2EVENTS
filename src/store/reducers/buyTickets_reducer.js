@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import actions from "../actions/buyTickets";
+import actions from "../actions/buyTickets.js";
 const {buyTickets_read}=actions 
 let initialState= {
     tickets:[]
