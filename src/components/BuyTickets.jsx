@@ -10,24 +10,20 @@ import { useSelector, useDispatch } from "react-redux"
 import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
 const {buyTickets_read} = tickets_actions
+
 const BuyTickets=()=>{
   let dispatch= useDispatch()
-let store = useSelector(store=>store)  
+let store = useSelector(store=>store.tickets.tickets)  
   console.log(store)
- // let tickets = useSelector(store=>console.log(store.buyTickets))
- // useEffect(()=>{
-  //  if(tickets.length=== 0){
-
- ///     dispatch(buyTickets_read())
-   // }
-    
-  //},[])
 
 
- const [tickets, setTickets]= useState([])
+ 
   useEffect(()=>{
-   dispatch(buyTickets_read())
-    .catch((err)=>console.log(err))
+    if(!store){
+      dispatch(buyTickets_read())
+
+    }
+   
 
   }, [])
     return(
@@ -51,7 +47,7 @@ let store = useSelector(store=>store)
   <div class="h-full gap-4  flex flex-wrap justify-center items-center rounded-lg ">
 
 
-{tickets.map((tick)=>{ return(
+{store.map((tick)=>{ return(
 
 
   

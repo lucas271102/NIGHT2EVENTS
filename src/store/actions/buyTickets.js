@@ -10,7 +10,7 @@ async()=>{
     let res = axios(`${apiUrl}tickets`) 
     console.log( (await res).data.response)
     return {
-        tickets: res.data.response
+        tickets: (await res).data.response
     }
    } catch (error) {
     console.log(error)
