@@ -6,7 +6,7 @@ import cart_reducer from './reducers/cart_reducer.js'
 const store = configureStore({
     reducer:{
     userLogin : user_LoginReducer,
-    buyTickets:buyTickets_reducer,
+    tickets:buyTickets_reducer,
     navCartItemsCount:cartNav_reducer,
     cartReducer:cart_reducer
     }

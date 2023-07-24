@@ -1,13 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 import apiUrl from "../../../api";
+
 const buyTickets_read = createAsyncThunk('buyTickets_read',
 async()=>{
   
    try {
   
-    let res =  await axios(`${apiUrl}tickets`)
-    return {tickets:res.response}
+    let res = axios(`${apiUrl}tickets`) 
+    console.log( (await res).data.response)
+    return {
+        tickets: res.data.response
+    }
    } catch (error) {
     console.log(error)
     return{
@@ -17,3 +21,4 @@ async()=>{
 )
 const actions = {buyTickets_read}
 export default actions
+ 

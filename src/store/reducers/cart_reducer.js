@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import actions from "../actions/carrito_action";
+import actions from "../actions/cart_action";
 
 const { read_cart } = actions;
 

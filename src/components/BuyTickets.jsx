@@ -11,9 +11,9 @@ import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
 const {buyTickets_read} = tickets_actions
 const BuyTickets=()=>{
-//  const dispatch= useDispatch()
-  
-  
+  let dispatch= useDispatch()
+let store = useSelector(store=>store)  
+  console.log(store)
  // let tickets = useSelector(store=>console.log(store.buyTickets))
  // useEffect(()=>{
   //  if(tickets.length=== 0){
@@ -26,8 +26,7 @@ const BuyTickets=()=>{
 
  const [tickets, setTickets]= useState([])
   useEffect(()=>{
-    axios(`${apiUrl}tickets`)
-    .then((res)=>setTickets(res.data.response))
+   dispatch(buyTickets_read())
     .catch((err)=>console.log(err))
 
   }, [])
