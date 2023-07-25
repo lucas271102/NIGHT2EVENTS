@@ -15,6 +15,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@nextui-org/react": "^1.0.0-beta.13",
+    "@prismane/core": "^0.2.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@splidejs/react-splide": "^0.7.12",
     "@tailwindcss/forms": "^0.5.4",

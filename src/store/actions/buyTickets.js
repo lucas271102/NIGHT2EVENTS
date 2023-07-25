@@ -7,7 +7,7 @@ async()=>{
   
    try {
   
-    let res = axios(`${apiUrl}tickets`) 
+    let res =  axios.get(`${apiUrl}tickets`) 
     console.log( (await res).data.response)
     return {
         tickets: (await res).data.response
