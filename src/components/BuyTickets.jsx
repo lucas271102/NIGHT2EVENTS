@@ -10,25 +10,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
 import { LazyLoadTypes } from "react-slick";
+import { Input } from '@nextui-org/react';
+
 const { buyTickets_read } = tickets_actions;
 
 const BuyTickets = () => {
   let dispatch = useDispatch();
-  let store = useSelector((store) => store?.tickets?.tickets);
+  let store = useSelector((store) => store.tickets.tickets);
   console.log(store);
 
   useEffect(() => {
-    if (!store) {
-    
-      dispatch(buyTickets_read());
-    }
+ if (store.length===0){
+
+   dispatch(buyTickets_read());
+ }
+  
   }, []);
+
+
+
+  useEffect(()=>{
+    axios.post(apiUrl + '/createcart')
+  })
   return (
     <div className="bg-black  h-full">
       <h1 className="text-3xl font-semibold p-4 text-white text-center">
         Here is your second chance to go out
       </h1>
-
+      <Input
+      className="flex justify-center items-center text-white p-2" 
+          bordered 
+          labelPlaceholder="Event Name" 
+          color="secondary" />
+          
       <div className=" flex flex-wrap justify-center items-center gap-6 p-6 ">
         <div class="h-full w-[100%] rounded-lg  "></div>
         <div class="h-full gap-4  flex flex-wrap justify-center items-center rounded-lg ">

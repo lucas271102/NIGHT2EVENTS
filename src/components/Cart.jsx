@@ -1,4 +1,8 @@
+import cart_read from '../store/actions/cart_action.js'
+
+
 const Cart = ()=>{
+
     return (
   
 <section>
