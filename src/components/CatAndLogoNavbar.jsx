@@ -75,7 +75,7 @@ const toast = useToast()
     <div className="flex h-44 md:h-16 flex-col md:flex-row items-center  justify-between">
       <div className="md:flex md:items-center md:gap-12">
         <a className="block text-teal-600" >
-          <span className="sr-only text-white">Home</span>
+         
        <Link to='/'> <img src={logo} className='w-32 p-4 h-24' /></Link>   
         </a>
       </div>
@@ -89,7 +89,7 @@ const toast = useToast()
 
             <li>
             <div>
-      <Button auto color="secondary"  shadow onPress={handler}>
+      <Button auto color="secondary" className="font-sans text-xl font-semibold" shadow onPress={handler}>
         Vender
       </Button>
       <Modal
@@ -100,7 +100,7 @@ const toast = useToast()
         onClose={closeHandler}
       >
         <Modal.Header>
-          <Text id="modal-title" size={18}>
+          <Text id="modal-title" className="font-sans" size={18}>
             Publish your
             <Text b size={18}>
                    ticket
@@ -165,10 +165,10 @@ const toast = useToast()
           </Row>
         </Modal.Body>
         <Modal.Footer className="flex justify-between">
-          <button className="bg-red-500 p-2 text-white font-semibold text-lg  font-sans border rounded-lg w-24" onClick={closeHandler}>
+          <button className="bg-red-500 p-2 text-white font-sans font-semibold text-lg  font-sans border rounded-lg w-24" onClick={closeHandler}>
             Close
           </button>
-          <button className="bg-violet-700 font-sans p-2 text-white font-semibold text-lg border rounded-lg w-24" onClick={publish}>
+          <button className="bg-violet-700 font-sans p-2 font-sans text-white font-semibold text-lg border rounded-lg w-24" onClick={publish}>
             Publish
           </button>
         </Modal.Footer>
@@ -194,7 +194,7 @@ const toast = useToast()
 
             <li>
               <Link to ='/buytickets'
-                className="text-white transition text-xl hover:text-violet-600"
+                className="text-white  font-sans font-semibold transition text-xl hover:text-violet-600"
                 
               >
                 Comprar
@@ -215,13 +215,13 @@ const toast = useToast()
 
       <div className="flex items-center gap-6">
         <div className="sm:flex  p-4 gap-6">
-          <Link to="/login" className="rounded-md bg-violet-700 px-5 py-2.5 text-sm font-medium text-white shadow" >
+          <Link to="/login" className="rounded-md font-sans bg-violet-700 px-5 py-2.5 text-md font-semibold font-medium text-white shadow" >
           Login
           </Link>
 
           
             <Link to='/signup'
-              className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-black"
+              className="rounded-md font-sans bg-white px-5 py-2.5 text-md font-semibold text-black"
              
             >
               Register

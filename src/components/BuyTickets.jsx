@@ -11,10 +11,10 @@ import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
 import { LazyLoadTypes } from "react-slick";
 import { Input } from '@nextui-org/react';
-
+import { useToast } from '@chakra-ui/react'
 const { buyTickets_read } = tickets_actions;
-
 const BuyTickets = () => {
+  const toast = useToast()
   let dispatch = useDispatch();
   let store = useSelector((store) => store.tickets.tickets);
   console.log(store);
@@ -28,13 +28,35 @@ const BuyTickets = () => {
   }, []);
 
 
+const addToCart= (ticket_id)=>{
+  
+    const data = {ticketId:ticket_id}
+    axios.post(apiUrl + '/cart/createcart', data)
+    .then(response=>{
+      console.log(response)
+      toast({
+        title: 'Ticket added successfully',
+        description: 'Now, you can see it',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
 
-  useEffect(()=>{
-    axios.post(apiUrl + '/createcart')
-  })
+    })
+    .catch(err=>{
+      toast({
+        title: 'Something went wrong...',
+        description: '',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+      console.log(err)
+    })
+}
   return (
     <div className="bg-black  h-full">
-      <h1 className="text-3xl font-semibold p-4 text-white text-center">
+      <h1 className="text-3xl font-semibold p-4 text-white font-sans text-center">
         Here is your second chance to go out
       </h1>
       <Input
@@ -87,12 +109,18 @@ const BuyTickets = () => {
                       {tick.name}
                     </h3>
 
-                    <p className="mt-1.5 text-sm text-gray-700">
+                    <p className="mt-1.5 text-md font-semibold font-sans text-gray-700">
                       ${tick.price}
                     </p>
 
                     <form className="mt-4 w-[50%] flex justify-center items-center ">
-                      <button className="w-[100%] bg-violet-700 transition-hover:w-[150%] text-white p-2 norder rounded-md ">
+                      <button className="w-[100%] bg-violet-700 font-sans font-semibold transition-hover:w-[150%] text-white p-2 norder rounded-md "
+                      type="submit"
+                      onClick={(e)=>{
+                        e.preventDefault()
+                        addToCart(tick._id)
+                      }}
+                      >
                         Add to cart
                       </button>
                     </form>
