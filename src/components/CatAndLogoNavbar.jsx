@@ -40,7 +40,7 @@ const toast = useToast()
     stock_available:newStock
   }
 
-  axios.post(apiUrl+'tickets/publish', publicData)
+  axios.post(apiUrl+'/tickets/publish', publicData)
   .then(res=>{
     console.log(res)
     toast({
