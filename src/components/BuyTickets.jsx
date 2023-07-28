@@ -33,7 +33,7 @@ const addToCart= (ticket_id)=>{
     const data = {ticketId:ticket_id}
     axios.post(apiUrl + '/cart/createcart', data)
     .then(response=>{
-      console.log(response)
+      
       toast({
         title: 'Ticket added successfully',
         description: 'Now, you can see it',
