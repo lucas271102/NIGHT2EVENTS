@@ -22,7 +22,7 @@ const SignUp = ()=>{
             profilePicture: profilePicture.current.value
         }
     console.log(data)
-    axios.post(`${apiUrl}users/signup`, data)
+    axios.post(`${apiUrl}/users/signup`, data)
     .then(res=>{
       toast({
         title: 'User registered',

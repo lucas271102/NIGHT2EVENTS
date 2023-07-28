@@ -24,7 +24,7 @@ let dataUser={
   email:inputEmail,
   password:inputPassword
 }
-axios.post(apiUrl+'users/signin', dataUser)
+axios.post(apiUrl+'/users/signin', dataUser)
 .then(res=>{
   console.log(res)
   toast({
