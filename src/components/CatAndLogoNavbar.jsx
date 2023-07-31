@@ -89,7 +89,7 @@ const toast = useToast()
 
             <li>
             <div>
-      <Button auto color="secondary" className="font-sans text-xl font-semibold" shadow onPress={handler}>
+      <Button auto color="secondary" className="font-sans font-light text-xl " shadow onPress={handler}>
         Vender
       </Button>
       <Modal
@@ -194,7 +194,7 @@ const toast = useToast()
 
             <li>
               <Link to ='/buytickets'
-                className="text-white  font-sans font-semibold transition text-xl hover:text-violet-600"
+                className="text-white  font-sans font-light transition text-xl hover:text-violet-600"
                 
               >
                 Comprar
@@ -215,13 +215,13 @@ const toast = useToast()
 
       <div className="flex items-center gap-6">
         <div className="sm:flex  p-4 gap-6">
-          <Link to="/login" className="rounded-md font-sans bg-violet-700 px-5 py-2.5 text-md font-semibold font-medium text-white shadow" >
+          <Link to="/login" className="rounded-md font-sans bg-violet-700 px-5 py-2.5 text-md font-light text-white shadow" >
           Login
           </Link>
 
           
             <Link to='/signup'
-              className="rounded-md font-sans bg-white px-5 py-2.5 text-md font-semibold text-black"
+              className="rounded-md font-sans bg-white px-5 py-2.5 text-md font-lgfht text-black"
              
             >
               Register

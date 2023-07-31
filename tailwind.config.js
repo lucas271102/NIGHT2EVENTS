@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        sans:['Biryoni','sans-serif']
+        //sans:['Biryoni','sans-serif']
       }
     },
   },
