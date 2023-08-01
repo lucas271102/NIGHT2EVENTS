@@ -31,7 +31,7 @@ const SignUp = ()=>{
         duration: 9000,
         isClosable: true,
       })
-      localStorage.setItem('user', data)
+      localStorage.setItem('user',JSON.stringify(data))
   
           navigate('/login')
     })
