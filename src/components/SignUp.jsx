@@ -12,14 +12,16 @@ const SignUp = ()=>{
     const navigate = useNavigate()
     const password = useRef()
     const email = useRef()
-    const profilePicture= useRef()
+    const name= useRef()
+    const surname = useRef()
     const toast = useToast()
     function handleForm(e){
         e.preventDefault()
         let data ={
             email:email.current.value,
             password:password.current.value,
-            profilePicture: profilePicture.current.value
+            name: name.current.value,
+            surname:surname.current.value
         }
     console.log(data)
     axios.post(`${apiUrl}/users/signup`, data)
@@ -131,10 +133,42 @@ const SignUp = ()=>{
         </div>
       </div>
       <div>
-        <label htmlFor="photo" className="sr-only">Profile Picture</label>
+        <label htmlFor="Name" className="sr-only">Name</label>
 
         <div className="relative">
-        <input type="file" name="photo" id="upload" label='Photo' ref={profilePicture} />
+        <input type="text" name="name"  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter your name"  label='Name' ref={name} />
+
+          <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div>
+        <label htmlFor="Surname" className="sr-only">Surname</label>
+
+        <div className="relative">
+        <input type="text" name="surname"  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter Surname" label='Surname' ref={surname} />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg

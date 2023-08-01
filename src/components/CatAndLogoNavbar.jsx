@@ -238,8 +238,8 @@ const CatAndLogoNavbar = () => {
               </div>
             </div>
           ) : ( <div className="min-w-40 justify-center items-center gap-2 font-medium flex">
-            <img src={user.profilePicture} className="w-10 h-10 rounded-full object-cover border-2 border-[#7847E0]" />
-          <p className="text-white font-light">{user.email}</p>
+            
+          <p className="text-white font-light text-xl"> ¡Hola, {user.name}{user.surname}!</p>
         </div>) }
         </div>
         <svg
