@@ -35,6 +35,7 @@ axios.post(apiUrl+'/users/signin', dataUser)
     isClosable: true,
   })
   localStorage.setItem('token', res.data.token)
+  localStorage.setItem('user',JSON.stringify(res.data.user))
   
   dispatch(SaveUserLogin({
     token:res.data.token,

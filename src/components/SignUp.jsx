@@ -64,7 +64,7 @@ const SignUp = ()=>{
       </p>
     </div>
 
-    <form onSubmit={(e)=>handleForm(e)} class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+    <form onSubmit={(e)=>handleForm(e)} encType="multipart/form-data" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
         <label for="email" className="sr-only">Email</label>
 

@@ -7,6 +7,9 @@ import { useRef } from "react";
 import { useToast } from "@chakra-ui/react";
 import apiUrl from "../../api.js";
 import { useNavigate } from "react-router-dom";
+import userLogin_action from '../store/actions/userLogin.js'
+import { useDispatch, useSelector } from 'react-redux'
+const {saveUserInfo} = userLogin_action
 
 const CatAndLogoNavbar = () => {
   let token = localStorage.getItem("token");
@@ -16,6 +19,9 @@ const CatAndLogoNavbar = () => {
     setVisible(false);
     console.log("closed");
   };
+
+  const { userLogin } = useSelector(store => store)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const toast = useToast();
   const name = useRef();
@@ -64,6 +70,19 @@ const CatAndLogoNavbar = () => {
         console.log(err);
       });
   };
+  const user = JSON.parse(localStorage.getItem('user')) || ""
+  const email = userLogin.email ? userLogin.email : user.email
+  const tokenLocalStorage = localStorage.getItem('token');
+  const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+
+
+  let tokenCurrent = ""
+  userLogin.token.length > 0 ? tokenCurrent = userLogin.token : tokenCurrent = tokenLocalStorage
+  //console.log(tokenCurrent);
+
+  let userCurrent = {}
+  userLogin.user.length > 0 ? userCurrent = userLogin.user : userCurrent = userLocalStorage
+  //console.log(userCurrent);
   return (
     <header className="bg-black p-10 shadow-white-500/50">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -200,7 +219,7 @@ const CatAndLogoNavbar = () => {
               </ul>
             </nav>
           </div>
-          {!token ? (
+          {!tokenCurrent ? (
             <div className="flex items-center gap-6">
               <div className="sm:flex  p-4 gap-6">
                 <Link
@@ -218,7 +237,10 @@ const CatAndLogoNavbar = () => {
                 </Link>
               </div>
             </div>
-          ) : null}
+          ) : ( <div className="min-w-40 justify-center items-center gap-2 font-medium flex">
+            <img src={user.profilePicture} className="w-10 h-10 rounded-full object-cover border-2 border-[#7847E0]" />
+          <p className="text-white font-light">{user.email}</p>
+        </div>) }
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
