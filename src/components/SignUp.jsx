@@ -57,9 +57,9 @@ const SignUp = ()=>{
   </div>
   <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-lg text-center">
-      <h1 className="text-2xl font-semibold font-sans text-white sm:text-3xl">Welcome TO NIGHT2Events!</h1>
+      <h1 className="text-2xl font-light font-sans text-white sm:text-3xl">Welcome TO NIGHT2Events!</h1>
 
-      <p className="mt-4  text-xl text-white">
+      <p className="mt-4  text-xl font-light text-white">
         Register here
       </p>
     </div>
@@ -134,12 +134,7 @@ const SignUp = ()=>{
         <label htmlFor="photo" className="sr-only">Profile Picture</label>
 
         <div className="relative">
-          <input
-            type="text"
-            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-            placeholder="Profile picture URL"
-            ref={profilePicture}
-          />
+        <input type="file" name="photo" id="upload" label='Photo' ref={profilePicture} />
 
           <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
@@ -168,13 +163,13 @@ const SignUp = ()=>{
 
       <div className="flex items-center justify-between">
         <p className="text-sm text-white">
-          Already have an account?
-          <Link to='/login' className="underline" href="">Sign in</Link>
+         ¿Ya tenés una cuenta?
+          <Link to='/login' className="underline" >Inicia sesión</Link>
         </p>
 
         <input
           type="submit"
-          className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
+          className="inline-block cursor-pointer rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
        />
           
         

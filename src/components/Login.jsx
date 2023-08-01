@@ -62,12 +62,9 @@ axios.post(apiUrl+'/users/signin', dataUser)
 <section className="relative flex flex-wrap bg-violet-700 lg:h-screen lg:items-center">
   <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-lg text-center">
-      <h1 className="text-2xl font-bold text-white sm:text-3xl">Get started today!</h1>
+      <h1 className="text-2xl font-light text-white sm:text-3xl">Inicia sesión</h1>
 
-      <p className="mt-4 text-white">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla
-        eaque error neque ipsa culpa autem, at itaque nostrum!
-      </p>
+      
     </div>
 
     <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
@@ -145,7 +142,7 @@ axios.post(apiUrl+'/users/signin', dataUser)
 
         <button
           type="submit"
-          className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-violet-700"
+          className="inline-block rounded-lg bg-white px-5 py-3 text-sm font-light text-violet-700"
           onClick={Signin}
         >
           Sign in

@@ -5,10 +5,10 @@ const read_cart = createAsyncThunk('read_cart', async()=>{
   try {
       
      
-      let res = await axios(apiUrl +'/cart')
-      console.log(res.data)
+      let res = axios(`${apiUrl}/cart/cart`)
+      console.log((await res).data.response)
       return {
-        cartItem:res.data
+        cartItem:(await res).data.response
       }
     } catch (error) {
         return{

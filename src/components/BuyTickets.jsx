@@ -20,7 +20,7 @@ const BuyTickets = () => {
   console.log(store);
 
   useEffect(() => {
- if (store.length===0){
+ if (store.length===0 ){
 
    dispatch(buyTickets_read());
  }
@@ -59,11 +59,7 @@ const addToCart= (ticket_id)=>{
       <h1 className="text-3xl font-light p-4 text-white font-sans text-center">
         Here is your second chance to go out
       </h1>
-      <Input
-      className="flex justify-center items-center text-white p-2" 
-          bordered 
-          labelPlaceholder="Event Name" 
-          color="secondary" />
+    
           
       <div className=" flex flex-wrap justify-center items-center gap-6 p-6 ">
         <div class="h-full w-[100%] rounded-lg  "></div>

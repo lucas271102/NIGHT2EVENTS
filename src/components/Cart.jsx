@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const {cart_read} = cart_actions
 const Cart = ()=>{
-let cart = useSelector((store)=>store.cartReducer.cartItem)
+let cart = useSelector((store)=>store)
 console.log(cart)
     return (
   
