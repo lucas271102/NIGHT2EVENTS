@@ -9,6 +9,17 @@ import apiUrl from "../../api.js";
 import { useNavigate } from "react-router-dom";
 import userLogin_action from '../store/actions/userLogin.js'
 import { useDispatch, useSelector } from 'react-redux'
+
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from '@chakra-ui/react'
 const {saveUserInfo} = userLogin_action
 
 const CatAndLogoNavbar = () => {
@@ -240,7 +251,22 @@ const CatAndLogoNavbar = () => {
           ) : ( <div className="min-w-40  items-center gap-8 font-medium flex justify-between">
             
           <p className="text-white font-light text-xl"> ¡Hola, {user.name}{user.surname}!</p>
-          <button className="bg-white rounded-md text-black  p-1  font-light w-32">Cerrar sesión</button>
+          <Menu>
+  <MenuButton as={Button} className="text-xl font-light bg-violet-700" colorScheme='purple'>
+    Mi Perfil
+  </MenuButton>
+  <MenuList>
+    <MenuGroup title='Perfil'>
+      <MenuItem className="font-light">Mi cuenta</MenuItem>
+      <MenuItem className="font-light"> Mis publicaciones </MenuItem>
+    </MenuGroup>
+    <MenuDivider />
+  
+      <MenuItem className="transition" ><h3 className="text-red-500">Cerrar Sesión</h3></MenuItem>
+      
+   
+  </MenuList>
+</Menu>
         </div>) }
         </div>
         <svg
