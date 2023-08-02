@@ -237,9 +237,10 @@ const CatAndLogoNavbar = () => {
                 </Link>
               </div>
             </div>
-          ) : ( <div className="min-w-40 justify-center items-center gap-2 font-medium flex">
+          ) : ( <div className="min-w-40  items-center gap-8 font-medium flex justify-between">
             
           <p className="text-white font-light text-xl"> ¡Hola, {user.name}{user.surname}!</p>
+          <button className="bg-white rounded-md text-black  p-1  font-light w-32">Cerrar sesión</button>
         </div>) }
         </div>
         <svg
