@@ -250,7 +250,7 @@ const CatAndLogoNavbar = () => {
             </div>
           ) : ( <div className="min-w-40  items-center gap-8 font-medium flex justify-between">
             
-          <p className="text-white font-light text-xl"> ¡Hola, {user.name}{user.surname}!</p>
+          <p className="text-white font-light text-xl"> ¡Hola, {user.name} {user.surname}!</p>
           <Menu>
   <MenuButton as={Button} className="text-xl font-light bg-violet-700" colorScheme='purple'>
     Mi Perfil
