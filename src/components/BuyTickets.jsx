@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
-//import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Text, Image } from '@chakra-ui/react'
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Stack,
+  Heading,
+  Divider,
+  ButtonGroup,
+  Text,
+  Image,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import apiUrl from "../../api";
@@ -10,63 +21,56 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Spacer } from "@nextui-org/react";
 import { Pagination } from "@nextui-org/react";
 import { LazyLoadTypes } from "react-slick";
-import { Input } from '@nextui-org/react';
-import { useToast } from '@chakra-ui/react'
+import { Input } from "@nextui-org/react";
+import { useToast } from "@chakra-ui/react";
 const { buyTickets_read } = tickets_actions;
 const BuyTickets = () => {
-  const toast = useToast()
+  const toast = useToast();
   let dispatch = useDispatch();
   let store = useSelector((store) => store.tickets.tickets);
   console.log(store);
 
   useEffect(() => {
- if (store.length===0 ){
-
-   dispatch(buyTickets_read());
- }
-  
+    if (store.length === 0) {
+      dispatch(buyTickets_read());
+    }
   }, []);
 
-
-const addToCart= (ticket_id)=>{
-  
-    const data = {ticketId:ticket_id}
-    axios.post(apiUrl + '/cart/createcart', data)
-    .then(response=>{
-      
-      toast({
-        title: 'Ticket added successfully',
-        description: 'Now, you can see it',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+  const addToCart = (ticket_id) => {
+    const data = { ticketId: ticket_id };
+    axios
+      .post(apiUrl + "/cart/createcart", data)
+      .then((response) => {
+        toast({
+          title: "Ticket added successfully",
+          description: "Now, you can see it",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
       })
-
-    })
-    .catch(err=>{
-      toast({
-        title: 'Something went wrong...',
-        description: '',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      })
-      console.log(err)
-    })
-}
+      .catch((err) => {
+        toast({
+          title: "Something went wrong...",
+          description: "",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+        console.log(err);
+      });
+  };
   return (
     <div className="bg-black  h-full">
       <h1 className="text-3xl font-light p-4 text-white font-sans text-center">
         Here is your second chance to go out
       </h1>
-    
-          
+
       <div className=" flex flex-wrap justify-center items-center gap-6 p-6 ">
         <div class="h-full w-[100%] rounded-lg  "></div>
         <div class="h-full gap-4  flex flex-wrap justify-center items-center rounded-lg ">
-          
-        
-                     {store ? (store.map((tick) => {
+          {store ? (
+            store.map((tick) => {
               return (
                 <div className="group relative     rounded-xl w-[100%] md:w-[50%] lg:w-[22%] shadow-[0_0_15px_white] ">
                   <div className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
@@ -108,12 +112,13 @@ const addToCart= (ticket_id)=>{
                     </p>
 
                     <form className="mt-4 w-[50%] flex justify-center items-center ">
-                      <button className="w-[100%] bg-violet-700 font-sans font-light transition-hover:w-[150%] text-white p-2 border rounded-md "
-                      type="submit"
-                      onClick={(e)=>{
-                        e.preventDefault()
-                        addToCart(tick._id)
-                      }}
+                      <button
+                        className="w-[100%] bg-violet-700 font-sans font-light transition-hover:w-[150%] text-white p-2 border rounded-md "
+                        type="submit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addToCart(tick._id);
+                        }}
                       >
                         Add to cart
                       </button>
@@ -121,7 +126,12 @@ const addToCart= (ticket_id)=>{
                   </div>
                 </div>
               );
-            })): <h4 className="text-white font-bold text-xl text-center">Loading...</h4>}
+            })
+          ) : (
+            <h4 className="text-white font-bold text-xl text-center">
+              Loading...
+            </h4>
+          )}
         </div>
       </div>
       <div className="flex justify-center items-center ">

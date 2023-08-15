@@ -136,6 +136,12 @@ const CatAndLogoNavbar = () => {
                         </Text>
                       </Modal.Header>
                       <Modal.Body>
+                        <form encType="multipart/form-data">
+                          <input type="text" placeholder="Name" ref={name}/>
+                          <label htmlFor="Name">Name</label>
+                          <input type="number" placeholder="Price" ref={price}/>
+                          <label htmlFor="Price">Price</label>
+                        </form>
                         <Input
                           clearable
                           bordered
