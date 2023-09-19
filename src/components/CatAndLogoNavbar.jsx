@@ -20,6 +20,7 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from '@chakra-ui/react'
+import { useState } from "react";
 const {saveUserInfo} = userLogin_action
 
 const CatAndLogoNavbar = () => {
@@ -94,8 +95,15 @@ const CatAndLogoNavbar = () => {
   let userCurrent = {}
   userLogin.user.length > 0 ? userCurrent = userLogin.user : userCurrent = userLocalStorage
   //console.log(userCurrent);
+  const [file, setFile]= useState()
+  const upload = ()=>{
+    const formData = new FormData()
+    formData.append('file', file)
+    axios.post(apiUrl + '/upload', formData)
+    .then(res => {}).catch(er => console.log(er))
+  }
   return (
-    <header className="bg-black p-10 shadow-white-500/50">
+    <header className="bg-gray-950 p-10 shadow-white-500/50">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-44 md:h-16 flex-col md:flex-row items-center  justify-between">
           <div className="md:flex md:items-center md:gap-12">
@@ -161,8 +169,12 @@ const CatAndLogoNavbar = () => {
                           color="primary"
                           size="lg"
                           placeholder="Photo"
+                          
                           ref={photo}
-                        />
+                          />
+                        <input type="file"   onChange={()=> setFile(e.target.files[0])}  />
+                        
+                        <button type="button" onPress={upload}>Upload</button>
                         <Input
                           clearable
                           bordered

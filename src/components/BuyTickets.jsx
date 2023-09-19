@@ -61,7 +61,7 @@ const BuyTickets = () => {
       });
   };
   return (
-    <div className="bg-black  h-full">
+    <div className="bg-gray-950  h-full">
       <h1 className="text-3xl font-light p-4 text-white font-sans text-center">
         Here is your second chance to go out
       </h1>
